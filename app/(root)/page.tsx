@@ -1,9 +1,13 @@
-import Image from "next/image";
+import Navbar from '../components/Navbar/navbar';
+import User from '../components/User/user';
 
-export default function Home() {
+export default async function Home() {
   return (
-   <>
-    <h1 className="text-2xl">HOME</h1>
-   </>
+    <>
+      <Navbar />
+      <h1 className='text-2xl'>HOME</h1>
+      <h2>User session</h2>
+      <User />
+    </>
   );
 }

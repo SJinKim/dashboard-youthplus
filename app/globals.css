@@ -2,20 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 🎨 Define Tailwind Colors as Variables */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gray-50: 249, 250, 251, 1;
+  --gray-100: 243, 244, 246, 1;
+  --gray-800: 30, 41, 57, 1;
+  --gray-900: 17, 24, 39, 1;
+  --white: 255, 255, 255, 1;
+  --black: 0, 0, 0, 1;
+
+  /* Button Defaults (Light Mode) */
+  --button-bg: var(--gray-800);
+  --button-text: var(--white);
+  --button-hover-bg: 75, 85, 99 1;
+  --button-border-clr: var(--black);
+  /* bg-gray-600 */
+
+  /* Navbar Default */
+  --navbar-bg: var(--gray-50);
+
+  /* some colors */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --color-primary-950: #172554;
+
+  /* fonts */
+  --font-body: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* 🌙 Dark Mode Overrides */
+.dark {
+  --button-bg: var(--gray-50);
+  --button-text: var(--gray-800);
+  --button-hover-bg: var(--gray-100);
+  --button-border-clr: var(--white);
+
+  --navbar-bg: var(--gray-900);
+}
+
+@layer base {
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    @apply transition-all dark:bg-gray-800 bg-white;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* 🎨 Reusable Components */
+@layer components {
+  .Button {
+    @apply transition-all duration-100 px-8 py-2 text-2xl md:text-4xl rounded-lg absolute right-9 bottom-5;
+    background-color: rgba(var(--button-bg));
+    color: rgba(var(--button-text));
+    border: 1px solid rgba(var(--button-border-clr));
+    border-radius: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .3rem;
+    padding-bottom: .3rem;
+  }
+
+  .Button:hover {
+    /* background-color: rgba(var(--button-hover-bg)); */
+  }
+
+  .Navbar {
+    @apply transition-all duration-100;
+    background-color: rgba(var(--navbar-bg));
+  }
+  
+  .LoginLogo {
+    height: 6rem;
+  }
 }
